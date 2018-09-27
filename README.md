@@ -2,8 +2,18 @@
 
 ## Run
 
-    docker run -p 7845:7845 aergo/node
+```console
+docker run -p 7845:7845 aergo/node
+
+# Override config file
+docker run -p 7845:7845 -v $(pwd)/config.toml:/aergo/config.toml aergo/node
+
+# Run the cli
+docker run aergo/node aergocli version
+```
 
 ## Build
 
-    docker build -t aergo/node .
+```console
+docker build -t aergo/node .
+```

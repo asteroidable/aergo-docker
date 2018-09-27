@@ -8,7 +8,7 @@ enabledebugmsg = false
 
 [rpc]
 netserviceaddr = "0.0.0.0"
-netserviceport = 7845
+netserviceport = 7848
 nstls = false
 nscert = ""
 nskey = ""
