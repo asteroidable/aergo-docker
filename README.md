@@ -16,4 +16,5 @@ docker run aergo/node aergocli version
 
 ```console
 docker build -t aergo/node .
+docker image push aergo/node
 ```
