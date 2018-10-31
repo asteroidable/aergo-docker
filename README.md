@@ -1,5 +1,8 @@
 # Docker image for aergo node
 
+[![docker size](https://img.shields.io/microbadger/image-size/aergo/node.svg)](https://hub.docker.com/r/aergo/node/)
+[![docker](https://img.shields.io/docker/pulls/aergo/node.svg)](https://hub.docker.com/r/aergo/node/)
+
 All runtime files are in the `/aergo` directory inside the Docker container. The easiest way to set this up is to override this directory with a local volume (e.g. `-v $(pwd)/:/aergo/`). Of course you can also override only specific files (`-v $(pwd)/config.toml:/aergo/config.toml`).
 
 When requested, the container exposes the ports 7845 7846 6060 8080. Please refer to the Aergo documentation for details about their usage. You need to bind ports that you want to use to your Docker host (e.g. `-p 17845:7845` to bind the interal port 7845 to the host port 17845).
