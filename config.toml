@@ -7,7 +7,7 @@ enablerest = false
 enabledebugmsg = false
 
 [rpc]
-netserviceaddr = "127.0.0.1"
+netserviceaddr = "0.0.0.0"
 netserviceport = 7845
 nstls = false
 nscert = ""
@@ -36,7 +36,7 @@ showmetrics = false
 dumpfilepath = "/aergo/mempool.dump"
 
 [consensus]
-enablebp = false
+enablebp = true
 enabledpos = false
 blockinterval = 1
 bpids = [
