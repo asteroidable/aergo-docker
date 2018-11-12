@@ -20,8 +20,8 @@ docker run -p 7845:7845 -v $(pwd)/config.toml:/aergo/config.toml aergo/node
 docker run -p 7845:7845 -v $(pwd)/:/aergo/ aergo/node
 
 # Run the cli
-docker run aergo/node aergocli version
-docker run aergo/node aergocli -H host_name -p host_bound_port blockchain
+docker run --rm aergo/node aergocli version
+docker run --rm aergo/node aergocli -H host_name -p host_bound_port blockchain
 ```
 
 ### Setup
@@ -29,12 +29,14 @@ docker run aergo/node aergocli -H host_name -p host_bound_port blockchain
 Generate genesis block
 
 ```console
-docker run -v $(pwd)/:/aergo/ aergo/node aergosvr init /aergo/genesis.json --dir /aergo/data --config /aergo/config.toml
+docker run --rm -v $(pwd)/:/aergo/ aergo/node aergosvr init /aergo/genesis.json --dir /aergo/data --config /aergo/config.toml
 ```
 
-## Build
+## Build and push a new version
 
 ```console
-docker build -t aergo/node .
-docker image push aergo/node  # docker hub authentication required
+docker build --build-arg AERGOVERSION=v0.8.0 -t aergo/node:0.8.0 .
+docker image push aergo/node   # docker hub authentication required
 ```
+
+Or build the latest: `docker build --build-arg AERGOVERSION=master -t aergo/node .`
