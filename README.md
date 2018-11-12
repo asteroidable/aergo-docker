@@ -39,4 +39,6 @@ docker build --build-arg AERGOVERSION=v0.8.0 -t aergo/node:0.8.0 .
 docker image push aergo/node   # docker hub authentication required
 ```
 
+You may need to run `docker login` before pushing to docker hub.
+
 Or build the latest: `docker build --build-arg AERGOVERSION=master -t aergo/node .`
