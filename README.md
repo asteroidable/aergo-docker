@@ -22,6 +22,9 @@ docker run -p 7845:7845 -v $(pwd)/:/aergo/ aergo/node
 # Run the cli
 docker run --rm aergo/node aergocli version
 docker run --rm aergo/node aergocli -H host_name -p host_bound_port blockchain
+
+# Run the brick tool
+docker run --rm -i --tty --workdir /tools aergo/node brick
 ```
 
 ### Setup

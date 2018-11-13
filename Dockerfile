@@ -7,6 +7,7 @@ RUN go get -d github.com/aergoio/aergo && cd ${GOPATH}/src/github.com/aergoio/ae
 FROM alpine:3.8
 RUN apk add libgcc
 COPY --from=builder $HOME/go/src/github.com/aergoio/aergo/bin/* /usr/local/bin/
+COPY --from=builder $HOME/go/src/github.com/aergoio/aergo/cmd/brick/arglog.toml /tools/arglog.toml
 ADD config.toml /aergo/config.toml
 WORKDIR /aergo/
 CMD ["aergosvr", "--config", "/aergo/config.toml"]
