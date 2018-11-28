@@ -25,6 +25,9 @@ docker run --rm aergo/node aergocli -H host_name -p host_bound_port blockchain
 
 # Run the brick tool
 docker run --rm -i --tty --workdir /tools aergo/node brick
+
+# Run server in test mode
+docker run --rm -p 7845:7845 aergo/node aergosvr --testmode
 ```
 
 ### Setup
@@ -35,13 +38,25 @@ Generate genesis block
 docker run --rm -v $(pwd)/:/aergo/ aergo/node aergosvr init /aergo/genesis.json --dir /aergo/data --config /aergo/config.toml
 ```
 
-## Build and push a new version
+## Build and push a new version to Docker Hub
 
 ```console
 docker build --build-arg AERGOVERSION=v0.8.0 -t aergo/node:0.8.0 .
-docker image push aergo/node   # docker hub authentication required
+docker image push aergo/node:0.8.0   # docker hub authentication required
 ```
+
+`AERGOVERSION` refers to a git tag or commit.
 
 You may need to run `docker login` before pushing to docker hub.
 
-Or build the latest: `docker build --build-arg AERGOVERSION=master -t aergo/node .`
+To build the latest master:
+
+```console
+docker build --build-arg AERGOVERSION=master -t aergo/node:latest .
+docker image push aergo/node:latest
+```
+
+If `master` is cached in Docker, use a git commit hash instead.
+
+BE CAREFUL when pushing already existing versions again. Docker Hub doesn't check what you push.
+Make sure you don't inadvertenly override an image that people already use.
