@@ -49,14 +49,16 @@ docker image push aergo/node:0.8.0   # docker hub authentication required
 
 You may need to run `docker login` before pushing to docker hub.
 
-To build the latest master:
+To build the latest master for testing, assign the next version if the `-rc` tag:
 
 ```console
-docker build --build-arg AERGOVERSION=master -t aergo/node:latest .
-docker image push aergo/node:latest
+docker build --build-arg AERGOVERSION=latest_git_hash -t aergo/node:0.8.2-rc .
+docker image push aergo/node:0.8.2-rc
 ```
-
-If `master` is cached in Docker, use a git commit hash instead.
 
 BE CAREFUL when pushing already existing versions again. Docker Hub doesn't check what you push.
 Make sure you don't inadvertenly override an image that people already use.
+
+`latest` should always point to a stable version:
+
+![Versioning scheme](https://msdnshared.blob.core.windows.net/media/2018/03/StableTagging.gif)
