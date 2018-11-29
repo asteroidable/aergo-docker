@@ -57,7 +57,8 @@ docker image push aergo/node:0.8.2-rc
 ```
 
 BE CAREFUL when pushing already existing versions again. Docker Hub doesn't check what you push.
-Make sure you don't inadvertenly override an image that people already use.
+Make sure you don't inadvertenly override an image that people already use. DO NOT run `docker image push aergo/node`,
+it pushes all tags that you have locally. Always push a specific tag.
 
 `latest` should always point to a stable version, so only re-assign it AFTER a version has been tested and released.
 
