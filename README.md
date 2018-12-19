@@ -4,7 +4,7 @@
 [![docker size](https://img.shields.io/microbadger/image-size/aergo/node.svg)](https://hub.docker.com/r/aergo/node/)
 [![docker layers](https://img.shields.io/microbadger/layers/aergo/node.svg)](https://microbadger.com/images/aergo/node)
 
-The docker image `aergo/node` contains the main server binary, `aergosvr`.
+The docker image **aergo/node** contains the main server binary, `aergosvr`.
 
 All runtime files are in the `/aergo` directory inside the Docker container. The easiest way to set this up is to override this directory with a local volume (e.g. `-v $(pwd)/:/aergo/`). Of course you can also override only specific files (`-v $(pwd)/config.toml:/aergo/config.toml`).
 
@@ -39,7 +39,7 @@ docker run --rm -v $(pwd)/:/aergo/ aergo/node aergosvr init /aergo/genesis.json 
 [![docker size](https://img.shields.io/microbadger/image-size/aergo/tools.svg)](https://hub.docker.com/r/aergo/tools/)
 [![docker layers](https://img.shields.io/microbadger/layers/aergo/tools.svg)](https://microbadger.com/images/aergo/tools)
 
-The aergo tools **aergocli, aergolua, brick** are packaged in another image, `aergo/tools`.
+The docker image **aergo/tools** contains the binaries for **aergocli, aergoluac, brick**.
 
 ## Run
 
