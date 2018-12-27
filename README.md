@@ -8,7 +8,7 @@ The docker image **aergo/node** contains the main server binary, `aergosvr`.
 
 All runtime files are in the `/aergo` directory inside the Docker container. The easiest way to set this up is to override this directory with a local volume (e.g. `-v $(pwd)/:/aergo/`). Of course you can also override only specific files (`-v $(pwd)/config.toml:/aergo/config.toml`).
 
-When requested, the container exposes the ports 7845 7846 6060 8080. Please refer to the Aergo documentation for details about their usage. You need to bind ports that you want to use to your Docker host (e.g. `-p 17845:7845` to bind the internal port 7845 to the host port 17845).
+When requested, the container exposes the ports 7845 7846 6060 8080. Please refer to the Aergo documentation for details about their usage. You need to bind ports that you want to use to your Docker host (e.g. `-p 17845:7845` to bind the internal port 7845 to the host port 17845). Avoid opening ports on nodes connected to a public network, accounts within the node may be accessible from the outside.
 
 ## Run
 
@@ -24,6 +24,28 @@ docker run -p 7845:7845 -v $(pwd)/:/aergo/ aergo/node
 # Run server in test mode
 docker run --rm -p 7845:7845 aergo/node aergosvr --config /aergo/config.toml --testmode
 ```
+
+### Available configurations
+
+You can either supply your own config file or use one of the included configurations.
+
+**Public testnet**
+
+    docker run --rm -p 7845:7845 aergo/node
+    (shortcut for: docker run --rm -p 7845:7845 aergo/node aergosvr --config /aergo/testnet.toml)
+
+**Private local net**
+
+    docker run --rm -p 7845:7845 aergo/node aergosvr --config /aergo/local.toml
+
+**Private local net with testmode**
+
+    docker run --rm -p 7845:7845 aergo/node aergosvr --config /aergo/testmode.toml
+
+### Data persistence
+
+Using `docker run` by default uses ephemeral storage, i.e. all data will be deleted after the server quits.
+To persist the data, mount a volume to the data directory, e.g. `-v $(pwd)/data/:/aergo/data/`.
 
 ### Setup
 
@@ -68,7 +90,7 @@ docker build --build-arg GIT_TAG=v0.8.3 -t aergo/tools:0.8.3 tools
 docker image push aergo/tools:0.8.3
 ```
 
-GIT_TAG can refer to either a tag or commit hash.
+`GIT_TAG` can refer to either a tag or commit hash.
 
 You may need to run `docker login` before pushing to docker hub.
 
@@ -83,6 +105,6 @@ BE CAREFUL when pushing already existing versions again. Docker Hub doesn't chec
 Make sure you don't inadvertenly override an image that people already use. DO NOT run `docker image push aergo/node`,
 it pushes all tags that you have locally. Always push a specific tag.
 
-`latest` should always point to a stable version, so only re-assign it AFTER a version has been tested and released.
+`latest` should always point to a stable version, so only re-assign it AFTER a version has been tested and released. We're trying to follow the "[stable release](https://blogs.msdn.microsoft.com/stevelasker/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/)" best practices.
 
 [![Versioning scheme](https://msdnshared.blob.core.windows.net/media/2018/03/StableTagging.gif)](https://blogs.msdn.microsoft.com/stevelasker/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/)
