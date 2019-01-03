@@ -15,7 +15,7 @@ nsallowcors = false
 restport = "8080"
 
 [p2p]
-netprotocoladdr = "127.0.0.1"
+netprotocoladdr = ""
 netprotocolport = 7846
 npbindaddr = "0.0.0.0"
 npbindport = 7846
@@ -24,7 +24,6 @@ npcert = ""
 npkey = ""
 npaddpeers = [
     "/ip4/13.124.81.52/tcp/7846/p2p/16Uiu2HAmMpx6WBWGkvmjQqRQLFsG2czfVhCijJH8hEJurouHJHiL",
-    "/ip4/13.209.189.119/tcp/7846/p2p/16Uiu2HAm2N7oquZE851WbVakUF2b6qcbkqa2cEgnGeVNEsZDY8iE",
     "/ip4/13.209.186.203/tcp/7846/p2p/16Uiu2HAmHpXhHzExXpg8Cw3RDUErPM5HBpJdpkJC8wnTzrfm3Gy5"
 ]
 npmaxpeers = "100"
@@ -37,6 +36,9 @@ blockchainplaceholder = false
 [mempool]
 showmetrics = false
 dumpfilepath = "/aergo/mempool.dump"
+enablefadeout = true
+fadeoutperiod = 12
+verifiers = 16
 
 [consensus]
 enablebp = false
