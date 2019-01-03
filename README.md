@@ -16,7 +16,7 @@ When requested, the container exposes the ports 7845 7846 6060 8080. Please refe
 docker run -p 7845:7845 aergo/node
 
 # Override config file
-docker run -p 7845:7845 -v $(pwd)/config.toml:/aergo/config.toml aergo/node
+docker run -p 7845:7845 -v $(pwd)/config.toml:/aergo/config.toml aergo/node aergosvr --config /aergo/config.toml
 
 # Override all runtime files
 docker run -p 7845:7845 -v $(pwd)/:/aergo/ aergo/node
