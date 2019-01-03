@@ -38,5 +38,3 @@ dumpfilepath = "/aergo/mempool.dump"
 enablebp = true
 enabledpos = false
 blockinterval = 1
-bpids = [
-]
