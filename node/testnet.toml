@@ -22,12 +22,14 @@ npbindport = 7846
 nptls = false
 npcert = ""
 npkey = ""
+npmaxpeers = "100"
+nppeerpool = "100"
 npaddpeers = [
     "/ip4/13.124.81.52/tcp/7846/p2p/16Uiu2HAmMpx6WBWGkvmjQqRQLFsG2czfVhCijJH8hEJurouHJHiL",
     "/ip4/13.209.186.203/tcp/7846/p2p/16Uiu2HAmHpXhHzExXpg8Cw3RDUErPM5HBpJdpkJC8wnTzrfm3Gy5"
 ]
-npmaxpeers = "100"
-nppeerpool = "100"
+npexposeself = false
+npusepolaris = false
 
 [blockchain]
 usefastsyncer = true
