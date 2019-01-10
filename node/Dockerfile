@@ -15,6 +15,7 @@ ADD testnet.toml /root/.aergo/config.toml
 ADD testnet-genesis.json /aergo/testnet-genesis.json
 ADD local.toml /aergo/local.toml
 ADD testmode.toml /aergo/testmode.toml
+ADD arglog.toml /aergo/arglog.toml
 WORKDIR /aergo/
 CMD ["aergosvr", "--config", "/aergo/testnet.toml"]
 EXPOSE 7845 7846 6060 8080
