@@ -63,3 +63,16 @@ do
 done
 
 echo "You can now push these to Docker Hub."
+echo "For example:"
+
+declare -a names=("node" "tools" "polaris")
+for name in "${names[@]}"
+do
+    echo "  docker push aergo/$name:$TAG"
+    echo "  docker push aergo/$name:$MAJOR_TAG"
+    if $LATEST
+    then
+        echo "  docker push aergo/$name:latest"
+    fi
+done
+
