@@ -4,7 +4,7 @@ caller = true  # enabling source file and line printer
 timefieldformat = "Jan _2 15:04:05"
 
 [chain]
-level = "debug"  # optional, log level for 'chain' module
+level = "info"  # optional, log level for 'chain' module
 
 [dpos]
 level = "info"
